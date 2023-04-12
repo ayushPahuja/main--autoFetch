@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "strict": true,
+        "esModuleInterop": true,
+        "inlineSourceMap": true,
+        "strictPropertyInitialization": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": true,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": false,
+        "noFallthroughCasesInSwitch": false,
+        "inlineSources": true,
+        "removeComments": true,
+        "allowSyntheticDefaultImports": true,
+        "incremental": true,
+        "skipLibCheck": true,
+        "strictBindCallApply": false,
+        "forceConsistentCasingInFileNames": false,
+        "resolveJsonModule": true,
+        "typeRoots": ["./src/common/types", "./node_modules/@types"],
+        "paths": {
+            "@common/*": ["src/common/*"],
+            "@modules/*": ["src/modules/*"]
+        }
+    }
+}

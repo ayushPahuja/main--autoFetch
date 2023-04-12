@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      # This section is responsible to Login into AWS-ECR-repository, where we are passing credentials through AWS-Secret-Manager and Fetching the commit details for docker-image-tags
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $default_region | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$default_region.amazonaws.com
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$default_region.amazonaws.com/$IMAGE_REPO_NAME
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  build:
+    commands:
+      # This section is responsible for creating docker image from Dockerfile, within our source code 
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG    
+  post_build:
+    commands:
+      # This section is responsible for pushing the latest docker image on ECR repository and creating image definitions file (For Further Deployment step on ECS)
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      #- printf '[{"name":"api-backend-stage","imageUri":"%s"}]' "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+      - printf '[{"name":"api-backend-stage","imageUri":"%s"}]' "$REPOSITORY_URI:latest" > imagedefinitions.json      
+artifacts:
+  files: imagedefinitions.json
+
