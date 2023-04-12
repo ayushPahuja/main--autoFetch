@@ -1,0 +1,86 @@
+"Front end param to see the draft"
+/?preview_secret=fUjXnZr4u7x!A%D*G-KaPdSgVkYp3s5v
+
+"Get footer Data"
+url=api/footers?populate=*
+endpoint=footer
+"?url=api/footers?populate=*&endpoint=footer
+
+"Get home-slider Data"
+url=api/home-sliders?populate=*
+endpoint=header-slider
+"?url=api/home-sliders?populate=*&endpoint=header-slider
+
+"Get home-section2 Data"
+url=api/home-section2s?populate=*
+endpoint=home-section2
+"?url=api/home-section2s?populate=*&endpoint=home-section2
+
+
+"Get quest-list Data"
+url=api/quest-lists?populate=*
+endpoint=quest-lists
+"?url=api/quest-lists?populate=*&endpoint=quest-lists
+
+"Get tournaments-list Data"
+url=api/tournaments-lists?populate=*
+endpoint=tournaments-list
+"?url=api/tournaments-lists?populate=*&endpoint=tournaments-list
+
+"Get game-list Data"
+url=api/game-lists?populate=*
+endpoint=game-list
+"?url=api/game-lists?populate=*&endpoint=game-list
+
+"Get wiki-list Data"
+url=api/media-lists?populate=*
+endpoint=media-lists
+"?url=api/media-lists?populate=*&endpoint=media-lists
+
+"Get single wiki-list Data"
+url=api/wiki-lists/1?populate=*
+endpoint=wiki-list-id
+"?url=api/wiki-lists/1?populate=*&endpoint=wiki-list-id
+
+"Get single quest Data"
+url=api/:slug?populate=*
+endpoint=quest
+"?url=api/quest-id-1?populate=*&endpoint=quest
+
+"Get single article Data"
+url=api/article-detail/:slug?populate=*
+endpoint=quest
+"?url=api/article-detail/revoland-game-play-featuring-rda-and-orangutan?populate=*&endpoint=quest
+
+"Get single video Data"
+url=api/video-detail/:slug?populate=*
+endpoint=quest
+"?url=api/video-detail/revoland-game-play-featuring-rda-and-orangutan?populate=*&endpoint=quest
+
+"Get meta_tags Data"
+url=api/meta-tags/:id?populate=*
+endpoint=meta
+"?url=api/meta-tags/1?populate=*&endpoint=quest
+
+"Get draft data too"******************
+
+quest-lists
+http://localhost:3000/strapi/data?url=api/quest-lists?publicationState=preview&filters[publishedAt][$null]=true&endpoint=quest-lists
+
+home-sliders
+http://localhost:3000/strapi/data?url=api/home-sliders?publicationState=preview&filters[publishedAt][$null]=true&endpoint=home-sliders
+
+tournaments-list
+http://localhost:3000/strapi/data?url=api/tournaments-lists?publicationState=preview&filters[publishedAt][$null]=true&endpoint=tournaments-lists
+
+Game_list
+http://localhost:3000/strapi/data?url=api/game-lists?publicationState=preview&filters[publishedAt][$null]=true&endpoint=game-lists
+
+media-lists
+http://localhost:3000/strapi/data?url=api/media-lists?publicationState=preview&filters[publishedAt][$null]=true&endpoint=media-lists
+
+article-details
+http://localhost:3000/strapi/data?url=api/article-details?publicationState=preview&filters[publishedAt][$null]=true&endpoint=article-details
+
+video-details
+http://localhost:3000/strapi/data?url=api/video-details?publicationState=preview&filters[publishedAt][$null]=true&endpoint=video-details
